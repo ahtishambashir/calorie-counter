@@ -128,3 +128,15 @@ const reverseString = (str) => {
 }
 
 console.log(reverseString("MentorSols"));
+
+// done with forward loop 
+
+const forwardReverseString = (str)=> {
+  let reversedFor = ''
+  for (let i = 0; i < str.length; i++) {
+    reversedFor = str[i] + reversedFor;
+  }
+  return reversedFor
+}
+console.log(forwardReverseString("frontend"));
+
