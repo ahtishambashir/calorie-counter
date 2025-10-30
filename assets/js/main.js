@@ -157,3 +157,18 @@ const isPalindrome = (str)=> {
 
 console.log(isPalindrome("madam"));
 console.log(isPalindrome("hello"));
+
+
+const removeDuplicates = (arr)=> {
+  let result = [];
+  let seen = {};
+  for(let i = 0; i < arr.length; i ++) {
+    if(!seen[arr[i]]) {
+      result.push(arr[i]);
+      seen[arr[i]] = true
+    }
+  }
+  return result
+}
+
+console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
