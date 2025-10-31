@@ -172,3 +172,18 @@ const removeDuplicates = (arr)=> {
 }
 
 console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
+
+const flattenArray = (arr)=> {
+  let result = [];
+  if(Array.isArray(arr[i])) {
+    let flattened = flattenArray(arr[i]);
+    for (let j = 0; j < flattened.length; j++) {
+      result.push(flattened[j]);
+    }
+  } else {
+    result.push(arr[i]);
+  }
+  return result;
+}
+
+console.log(flattenArray([1, [2, [3, [4]]]]));
