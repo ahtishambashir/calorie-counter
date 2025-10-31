@@ -187,3 +187,20 @@ const flattenArray = (arr)=> {
 }
 
 console.log(flattenArray([1, [2, [3, [4]]]]));
+
+const countVowels = (str)=> {
+  let count = 0;
+  let vowels = 'aeiouAEIOU';
+
+  for (let i = 0; i < str.length; i++) {
+    for (let j = 0; j < vowels.length; j++) {
+      if(str[i] === vowels[j]) {
+        count++;
+        break;
+      }
+    }
+  }
+  return count;
+}
+
+console.log(countVowels("developer"));
