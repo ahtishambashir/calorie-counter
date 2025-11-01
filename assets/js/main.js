@@ -247,3 +247,25 @@ const data = [
 ];
 
 console.log(groupBy(data, "country"));
+
+const debounce = (fn, delay)=> {
+  let timeOutId;
+  return function(...arg) {
+    if(timeOutId) {
+      clearTimeout(timeOutId);
+    }
+    timeOutId = setTimeout(()=> {
+      fn(...arg);
+    }, delay);
+  }
+}
+
+const sayHello = (name)=> {
+  console.log("Name:", `${name}!`)
+}
+
+const debouncedSayHello = debounce(sayHello, 2000);
+
+debouncedSayHello("John");   // Timer starts
+debouncedSayHello("Sarah");  // Timer resets
+debouncedSayHello("Mike");
