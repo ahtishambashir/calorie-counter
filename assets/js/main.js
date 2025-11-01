@@ -124,58 +124,57 @@ const reverseString = (str) => {
   for (let i = str.length - 1; i >= 0; i--) {
     reversed += str[i];
   }
-  return reversed
-}
+  return reversed;
+};
 
 console.log(reverseString("MentorSols"));
 
-// done with forward loop 
+// done with forward loop
 
-const forwardReverseString = (str)=> {
-  let reversedFor = ''
+const forwardReverseString = (str) => {
+  let reversedFor = "";
   for (let i = 0; i < str.length; i++) {
     reversedFor = str[i] + reversedFor;
   }
-  return reversedFor
-}
+  return reversedFor;
+};
 console.log(forwardReverseString("frontend"));
 
-const isPalindrome = (str)=> {
+const isPalindrome = (str) => {
   let start = 0;
   let end = str.length - 1;
 
-  while(start < end) {
-    if(str[start] !== str[end]) {
-      return false
+  while (start < end) {
+    if (str[start] !== str[end]) {
+      return false;
     }
     start++;
     end--;
   }
 
   return true;
-}
+};
 
 console.log(isPalindrome("madam"));
 console.log(isPalindrome("hello"));
 
-
-const removeDuplicates = (arr)=> {
+const removeDuplicates = (arr) => {
   let result = [];
   let seen = {};
-  for(let i = 0; i < arr.length; i ++) {
-    if(!seen[arr[i]]) {
+  for (let i = 0; i < arr.length; i++) {
+    if (!seen[arr[i]]) {
       result.push(arr[i]);
-      seen[arr[i]] = true
+      seen[arr[i]] = true;
     }
   }
-  return result
-}
+  return result;
+};
 
 console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
 
-const flattenArray = (arr)=> {
+const flattenArray = (arr) => {
   let result = [];
-  if(Array.isArray(arr[i])) {
+  if (Array.isArray(arr[i])) {
     let flattened = flattenArray(arr[i]);
     for (let j = 0; j < flattened.length; j++) {
       result.push(flattened[j]);
@@ -184,23 +183,45 @@ const flattenArray = (arr)=> {
     result.push(arr[i]);
   }
   return result;
-}
+};
 
 console.log(flattenArray([1, [2, [3, [4]]]]));
 
-const countVowels = (str)=> {
+const countVowels = (str) => {
   let count = 0;
-  let vowels = 'aeiouAEIOU';
+  let vowels = "aeiouAEIOU";
 
   for (let i = 0; i < str.length; i++) {
     for (let j = 0; j < vowels.length; j++) {
-      if(str[i] === vowels[j]) {
+      if (str[i] === vowels[j]) {
         count++;
         break;
       }
     }
   }
   return count;
-}
+};
 
 console.log(countVowels("developer"));
+
+const firstNonRepeating = (atr) => {
+  let frequency = {};
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (frequency[char]) {
+      frequency[char]++;
+    } else {
+      frequency[char] = 1;
+    }
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    if (frequency[str[i]] === 1) {
+      return str[i];
+    }
+  }
+  return null;
+};
+
+console.log(firstNonRepeating("aabbcdee"));
