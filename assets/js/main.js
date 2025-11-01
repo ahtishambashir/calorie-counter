@@ -225,3 +225,25 @@ const firstNonRepeating = (atr) => {
 };
 
 console.log(firstNonRepeating("aabbcdee"));
+
+const groupBy = (arr, key)=> {
+  let result = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let item = arr[i];
+    let groupKey = item[key];
+    if(!result[groupKey]) {
+      result[groupKey] = [];
+    }
+
+    result[groupKey].push(item);
+  }
+  return result;
+}
+
+const data = [
+  { country: "US", name: "John" },
+  { country: "CA", name: "Ali" },
+  { country: "US", name: "Sarah" },
+];
+
+console.log(groupBy(data, "country"));
