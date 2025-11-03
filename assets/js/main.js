@@ -266,6 +266,40 @@ const sayHello = (name)=> {
 
 const debouncedSayHello = debounce(sayHello, 2000);
 
-debouncedSayHello("John");   // Timer starts
-debouncedSayHello("Sarah");  // Timer resets
+debouncedSayHello("John");   
+debouncedSayHello("Sarah");
 debouncedSayHello("Mike");
+
+const deepClone = (obj)=> {
+  if(obj === null || typeof obj !== 'object') {
+    return obj
+  }
+
+  if(obj instanceof Date) {
+    return new Date(obj.getTime());
+  }
+  if(Array.isArray(obj)) {
+    let arrCopy = [];
+    for(let i = 0; i < obj.length; i++) {
+      arrCopy[i] = deepClone(obj[i]);
+    }
+    return arrCopy
+  }
+
+  let objCopy = {};
+  for(let key in obj) {
+    if(obj.hasOwnProperty(key)) {
+      objCopy[key] = deepClone(obj[key]);
+    }
+  }
+  return objCopy;
+}
+
+// Example usage:
+const obj = { a: 1, b: { c: 2 } };
+const clone = deepClone(obj);
+
+clone.b.c = 99;
+
+console.log(obj.b.c);   // 2 (original unchanged)
+console.log(clone.b.c); // 99 (clone modified)
