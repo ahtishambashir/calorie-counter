@@ -303,3 +303,41 @@ clone.b.c = 99;
 
 console.log(obj.b.c);   // 2 (original unchanged)
 console.log(clone.b.c); // 99 (clone modified)
+
+
+const reverseWords =(str)=> {
+  let words = [];
+  let currentWord = '';
+
+  for(let i = 0; i < str.length; i++) {
+    if(str[i] === ' ') {
+      if(currentWord !== '') {
+        words.push(currentWord);
+        currentWord = '';
+      }
+    } else {
+      currentWord += str[i];
+    }
+  }
+
+  if(currentWord !== '') {
+    words.push(currentWord);
+  }
+
+  let reversed = [];
+  for(let i = words.length - 1; i >= 0; i--) {
+    reversed.push(words[i]);
+  }
+
+  let result = [];
+  for(let i = 0; i < reversed.length; i++) {
+    result += reversed[i];
+    if(i < reversed.length - 1) {
+      result += ' ';
+    }
+  }
+
+  return result;
+}
+
+console.log(reverseWords("Frontend Developer Interview"));
