@@ -226,19 +226,19 @@ const firstNonRepeating = (atr) => {
 
 console.log(firstNonRepeating("aabbcdee"));
 
-const groupBy = (arr, key)=> {
+const groupBy = (arr, key) => {
   let result = 0;
   for (let i = 0; i < arr.length; i++) {
     let item = arr[i];
     let groupKey = item[key];
-    if(!result[groupKey]) {
+    if (!result[groupKey]) {
       result[groupKey] = [];
     }
 
     result[groupKey].push(item);
   }
   return result;
-}
+};
 
 const data = [
   { country: "US", name: "John" },
@@ -248,52 +248,52 @@ const data = [
 
 console.log(groupBy(data, "country"));
 
-const debounce = (fn, delay)=> {
+const debounce = (fn, delay) => {
   let timeOutId;
-  return function(...arg) {
-    if(timeOutId) {
+  return function (...arg) {
+    if (timeOutId) {
       clearTimeout(timeOutId);
     }
-    timeOutId = setTimeout(()=> {
+    timeOutId = setTimeout(() => {
       fn(...arg);
     }, delay);
-  }
-}
+  };
+};
 
-const sayHello = (name)=> {
-  console.log("Name:", `${name}!`)
-}
+const sayHello = (name) => {
+  console.log("Name:", `${name}!`);
+};
 
 const debouncedSayHello = debounce(sayHello, 2000);
 
-debouncedSayHello("John");   
+debouncedSayHello("John");
 debouncedSayHello("Sarah");
 debouncedSayHello("Mike");
 
-const deepClone = (obj)=> {
-  if(obj === null || typeof obj !== 'object') {
-    return obj
+const deepClone = (obj) => {
+  if (obj === null || typeof obj !== "object") {
+    return obj;
   }
 
-  if(obj instanceof Date) {
+  if (obj instanceof Date) {
     return new Date(obj.getTime());
   }
-  if(Array.isArray(obj)) {
+  if (Array.isArray(obj)) {
     let arrCopy = [];
-    for(let i = 0; i < obj.length; i++) {
+    for (let i = 0; i < obj.length; i++) {
       arrCopy[i] = deepClone(obj[i]);
     }
-    return arrCopy
+    return arrCopy;
   }
 
   let objCopy = {};
-  for(let key in obj) {
-    if(obj.hasOwnProperty(key)) {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
       objCopy[key] = deepClone(obj[key]);
     }
   }
   return objCopy;
-}
+};
 
 // Example usage:
 const obj = { a: 1, b: { c: 2 } };
@@ -301,43 +301,57 @@ const clone = deepClone(obj);
 
 clone.b.c = 99;
 
-console.log(obj.b.c);   // 2 (original unchanged)
+console.log(obj.b.c); // 2 (original unchanged)
 console.log(clone.b.c); // 99 (clone modified)
 
-
-const reverseWords =(str)=> {
+const reverseWords = (str) => {
   let words = [];
-  let currentWord = '';
+  let currentWord = "";
 
-  for(let i = 0; i < str.length; i++) {
-    if(str[i] === ' ') {
-      if(currentWord !== '') {
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === " ") {
+      if (currentWord !== "") {
         words.push(currentWord);
-        currentWord = '';
+        currentWord = "";
       }
     } else {
       currentWord += str[i];
     }
   }
 
-  if(currentWord !== '') {
+  if (currentWord !== "") {
     words.push(currentWord);
   }
 
   let reversed = [];
-  for(let i = words.length - 1; i >= 0; i--) {
+  for (let i = words.length - 1; i >= 0; i--) {
     reversed.push(words[i]);
   }
 
   let result = [];
-  for(let i = 0; i < reversed.length; i++) {
+  for (let i = 0; i < reversed.length; i++) {
     result += reversed[i];
-    if(i < reversed.length - 1) {
-      result += ' ';
+    if (i < reversed.length - 1) {
+      result += " ";
     }
   }
 
   return result;
-}
+};
 
 console.log(reverseWords("Frontend Developer Interview"));
+
+const flatArray = (arr) => {
+  let result = [];
+  if (Array.isArray(arr[i])) {
+    let flaterArray = flatArray(arr[i]);
+    for (let j = 0; j < arr.flaterArray; j++) {
+      result.push(flaterArray[j]);
+    }
+  } else {
+    result.push(arr[i])
+  }
+  return result
+};
+
+console.log(flattenArray([1, [2, [3, [4]]]]));
